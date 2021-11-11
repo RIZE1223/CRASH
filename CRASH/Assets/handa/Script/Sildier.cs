@@ -4,46 +4,63 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof (Image))]
 public class Sildier : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Rigidbody2D rb;
+    //ドラッグ前の位置
+    private Vector2 startPos;
 
-    public float moveSpeed = 0;
-
-    void Stat()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
+    //ドラッグ開始
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("start");
+        //ドラッグ前の位置を記憶する
+        startPos = transform.position;
+
+        //色を薄くする
         GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.5f);
+
+        //raycastTargetをOFFにする
         GetComponent<Image>().raycastTarget = false;
     }
 
+    //ドラッグ中
     public void OnDrag(PointerEventData eventData)
     {
-        //Debug.Log("Ing");
+        //ドラッグ中は位置を更新する
+        transform.position = eventData.position;
+
         GetComponent<RectTransform>().Translate(eventData.delta);
     }
 
+    //ドラッグ終了
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("End");
+        //色を元に戻す（白色にする）
         GetComponent<Image>().color = Color.white;
+
+        //raycastTargetをONにする
         GetComponent<Image>().raycastTarget = true;
 
-        if (gameObject.tag == "Stage")
+        bool flg = true;
+
+        var raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+
+        foreach (var hit in raycastResults)
         {
-            GetComponent<Image>().raycastTarget = false;
-            Debug.Log("On");
-            moveSpeed = 1;
-            rb.velocity = new Vector2(moveSpeed, 0);
+            if (hit.gameObject.CompareTag("Stage"))
+            {
+                transform.position = hit.gameObject.transform.position;
+                flg = false;
+
+                GetComponent<Image>().raycastTarget = false;
+
+            }
         }
-        else
+
+        if (flg)
         {
-            moveSpeed = 0;
+            transform.position = startPos;
         }
     }
 }

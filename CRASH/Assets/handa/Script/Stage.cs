@@ -9,7 +9,7 @@ public class Stage : MonoBehaviour, IDropHandler
     {
         if(eventData.pointerDrag != null)
         {
-            //Debug.Log(eventData.pointerDrag.gameObject.name);
+            //‹z’…‚·‚éˆ—
             eventData.pointerDrag.gameObject.GetComponent<RectTransform>().anchoredPosition =
                 GetComponent<RectTransform>().anchoredPosition;
         }
