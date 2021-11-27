@@ -12,6 +12,7 @@ public class Unit_base : MonoBehaviour
         scout,      //斥候
         catapult,   //投石器
     }
+
     [SerializeField, Header("ユニットタイプ")]
     private Unit_type unit_type;    //ユニットのタイプを選択
 

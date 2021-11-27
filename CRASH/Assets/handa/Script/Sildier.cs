@@ -9,13 +9,10 @@ public class Sildier : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 {
     //ドラッグ前の位置
     private Vector2 startPos;
-
     //ドラッグ開始
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //ドラッグ前の位置を記憶する
         startPos = transform.position;
-
         //色を薄くする
         GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.5f);
 
@@ -26,10 +23,10 @@ public class Sildier : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     //ドラッグ中
     public void OnDrag(PointerEventData eventData)
     {
-        //ドラッグ中は位置を更新する
-        transform.position = eventData.position;
-
-        GetComponent<RectTransform>().Translate(eventData.delta);
+        Vector2 objectPoint　= Camera.main.WorldToScreenPoint(transform.position);   //objectの位置をワールド座標からスクリーン座標に変換して、objectPointに格納
+        Vector2 pointScreen　= new Vector2(Input.mousePosition.x,Input.mousePosition.y);   //マウスの位置を保存   
+        Vector2 pointWorld = Camera.main.ScreenToWorldPoint(pointScreen);   //オブジェクトの現在位置を、スクリーン座標からワールド座標に変換して、pointWorldに格納
+        transform.position = pointWorld;    //オブジェクトの位置を、pointWorldにする
     }
 
     //ドラッグ終了
