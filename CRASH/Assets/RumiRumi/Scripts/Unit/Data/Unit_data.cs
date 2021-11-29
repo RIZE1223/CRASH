@@ -5,12 +5,12 @@ public class Unit_data : ScriptableObject
 {
     public enum Unit_class    //ユニットのクラス
     {
-        castle,
-        short_range_unit,
-        long_range_unit,
-        machine_unit
+        castle, //城
+        short_range_unit,   //近距離ユニット
+        long_range_unit,    //遠距離ユニット
+        machine_unit        //兵器ユニット
     }
-    [SerializeField, Header("ユニット名")]
+    [SerializeField,Header("ユニット名")]
     private string unit_name;
 
     [SerializeField, Header("ユニットクラス")]

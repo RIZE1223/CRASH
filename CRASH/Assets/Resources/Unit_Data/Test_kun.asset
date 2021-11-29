@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Test_kun
   m_EditorClassIdentifier: 
   unit_name: "\u30C6\u30B9\u30C8\u541B"
-  unit_type: 0
-  unit_object: {fileID: 6855320594298189023, guid: a73970904ec41ad459998a6a468b4cde, type: 3}
+  unit_type: 1
+  unit_object: {fileID: 7681371508390153953, guid: a73970904ec41ad459998a6a468b4cde, type: 3}
