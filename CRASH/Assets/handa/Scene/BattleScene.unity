@@ -1605,7 +1605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7681371508390153959, guid: a73970904ec41ad459998a6a468b4cde, type: 3}
       propertyPath: attack_cool_time
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7681371508390153963, guid: a73970904ec41ad459998a6a468b4cde, type: 3}
       propertyPath: m_RootOrder

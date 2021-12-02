@@ -30,9 +30,9 @@ public class Unit_manager : MonoBehaviour
     /// 実装理由：      同時に攻撃が発生した場合のエラー回避用
     /// やっていること：攻撃範囲に入った者から攻撃を予約して攻撃時間が来たら攻撃をする。
     /// </summary>
-    public void Update()
+    public void FixedUpdate()
     {
-        float elapsed_time = Time.deltaTime;    //経過時間の取得
+        float elapsed_time = Time.fixedDeltaTime;    //経過時間の取得
 
         for (int i = 0; i < attackInfos.Count; i++)
         {
