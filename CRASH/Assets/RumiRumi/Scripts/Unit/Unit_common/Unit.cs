@@ -19,9 +19,8 @@ public class Unit : MonoBehaviour
     public GameObject target = null;  //攻撃するターゲットを格納
 
     [HideInInspector]
-    public bool isCooldown;    //クールダウンしてるかみるYO!
-
-    protected int List_number;    //managerで管理されている自身の番号を記憶する
+    public bool isCool_down;    //クールダウンしてるかみるYO!
+    private bool isAttack_reserve;  //攻撃予約を行っているかをみるYO!
 
 //------------------------------------------------------------------------------
 
@@ -33,8 +32,8 @@ public class Unit : MonoBehaviour
 
     private void Start()
     {
-        isCooldown = false;
-        List_number = 0;
+        isCool_down = false; //クールダウン中はAttack_speedの数値分待機しています。
+        isAttack_reserve = false;
     }
 
 
@@ -42,13 +41,13 @@ public class Unit : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         //体力が０以下ならオブジェクトを削除
         if (unit_model.hp <= 0)
         {
-            //グッバーイ
+            //RiP
             Destroy(this.gameObject);
         }
+
         else if (unit_model.hp > 0)
         {
             switch (unit_move)
@@ -57,8 +56,11 @@ public class Unit : MonoBehaviour
                     Moving_method();
                     break;
                 case Unit_move.Battle:
-                    unit_manager.AddAttack(GetComponent<Unit>());
-                    List_number = unit_manager.attackInfos.Count;
+                    if (!isAttack_reserve)//連続で予約がされないようにしている
+                    {
+                        unit_manager.AddAttack(GetComponent<Unit>());
+                        isAttack_reserve = true;    //攻撃予約しましたよん
+                    }
                     break;
                 default:
                     Debug.Log("ちゃんと動作してないよん(キャラの行動)");
@@ -67,18 +69,37 @@ public class Unit : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 攻撃
+    /// </summary>
+    /// <param name="cool_time">Attack_speed(攻撃後から次の攻撃が呼ばれるまで。)</param>
+    /// <returns></returns>
     public IEnumerator Battle(float cool_time)
     {
-        Attack();
-        if (target == null)  //死んでいるかチェック
+        if (isCool_down != true) //クールタイムが終了していることを確認
+        {
+            if (target != null) //攻撃対象が決まっているかを確認
+            {
+                Attack();
+            }
+            isCool_down = true;  //攻撃後のクールタイムを開始を指示
+        }
+        
+        if (target == null)  //攻撃対象を倒したか確認
         {
             unit_move = Unit_move.Moving_method;   //移動開始
         }
 
-        yield return new WaitForSeconds(cool_time);
-        isCooldown = false;
+        yield return new WaitForSeconds(cool_time); //クールタイム計測開始
+
+        //リセット
+        isCool_down = false; //攻撃後の待機開始
+        isAttack_reserve = false;   //攻撃が完了し予約を解除したよ！
     }
 
+    /// <summary>
+    /// 移動
+    /// </summary>
     protected virtual void Moving_method()
     {
         Move();
@@ -99,17 +120,25 @@ public class Unit : MonoBehaviour
 
 //------------------------------------------------------------------------------
 
-    protected virtual void OnTriggerEnter2D(Collider2D co)
+    protected virtual void OnCollisionEnter2D(Collision2D co)
     {
         if (gameObject.CompareTag("Unit1"))
         {
-            if (co.CompareTag("Unit2") || co.CompareTag("Castle2"))
+            if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2"))
                 target = co.gameObject;//攻撃対象を選択
         }
-        if (gameObject.CompareTag("Unit2"))
+        else if (gameObject.CompareTag("Unit2"))
         {
-            if (co.CompareTag("Unit1") || co.CompareTag("Castle1"))
+            if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1"))
                 target = co.gameObject;     //攻撃対象を選択
+        }
+    }
+
+    protected virtual void OnCollisionExit2D(Collision2D co)
+    {
+        if(co.gameObject == target.gameObject)
+        {
+            target = null;  //攻撃範囲外に出た場合はtargetから外すよ
         }
     }
 }

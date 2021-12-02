@@ -9,6 +9,8 @@ public class Unit_manager : MonoBehaviour
 
     [SerializeField]
     public static List<Unit_data> unit_list { get; private set; }
+
+
     private void Awake()
     {
         //ユニットのデータはすべてここにリスト化されるよ。
@@ -16,37 +18,42 @@ public class Unit_manager : MonoBehaviour
         //Unit_dataをロード
         unit_list = new List<Unit_data>(dataFiles);
     }
+        
 
     public void AddAttack(Unit us)
     {
         attackInfos.Add(us);
     }
+
     /// <summary>
     /// これはなんぞや： 攻撃に関する衝突回避処理
     /// 実装理由：      同時に攻撃が発生した場合のエラー回避用
     /// やっていること：攻撃範囲に入った者から攻撃を予約して攻撃時間が来たら攻撃をする。
     /// </summary>
-    public void FixedUpdate()
+    public void Update()
     {
-        for(int i = 0; i < attackInfos.Count; i++)
-        {
-            if (attackInfos[i] != null)
-            {
-                attackInfos[i].GetComponent<Unit_model>().now_attack_delay += Time.deltaTime;
+        float elapsed_time = Time.deltaTime;    //経過時間の取得
 
-                if (attackInfos[i].GetComponent<Unit_model>().now_attack_delay > attackInfos[i].GetComponent<Unit_model>().attack_delay
-                    && attackInfos[i].GetComponent<Unit>().isCooldown == false)
+        for (int i = 0; i < attackInfos.Count; i++)
+        {
+            Debug.Log(i);
+            if (attackInfos[i] != null && attackInfos[i].GetComponent<Unit>().isCool_down == false)
+            {
+                attackInfos[i].GetComponent<Unit_model>().now_attack_delay += elapsed_time;
+
+                //攻撃ディレイが規定時間に達した場合読み込まれるよん / 攻撃のアニメーションが使われている際にここの計算を使用されるよ。
+                if (attackInfos[i].GetComponent<Unit_model>().now_attack_delay > attackInfos[i].GetComponent<Unit_model>().attack_delay)
                 {
                     //攻撃の処理
-                    StartCoroutine(attackInfos[i].GetComponent<Unit>().Battle(attackInfos[i].GetComponent<Unit_model>().attack_speed));   //攻撃の呼び出し
+                    StartCoroutine(attackInfos[i].GetComponent<Unit>().Battle(attackInfos[i].GetComponent<Unit_model>().attack_cool_time));   //攻撃の呼び出し
 
                     //リセット
-                    attackInfos[i].GetComponent<Unit_model>().now_attack_delay = 0; //攻撃待機時間を０に
+                    attackInfos[i].GetComponent<Unit_model>().now_attack_delay = 0; //攻撃待機時間を０にするよ
                     //リストから削除
                     attackInfos.Remove(attackInfos[i]);
                 }
             }
-            else if(attackInfos[i]　== null)
+            else if(attackInfos[i]　== null) //攻撃予約をしたユニットが死んでいるか確認
             {
                 attackInfos.Remove(attackInfos[i]); //nullだったら破棄するよ
             }
@@ -79,14 +86,18 @@ public class Unit_manager : MonoBehaviour
 
     /*
     ↓呼び出すときはこう書く
-    InstantiateEnemy();
+    Instantiate_unit(unit_list[必要なユニットの格納されているListの番号]);
 
     ↓関数の中身はこれだよ
     public static GameObject Instantiate_unit(Unit_data unit_data)
     {
-        GameObject enemy = Instantiate(unit_data.Unit_object, new Vector3(0,0,0), Quaternion.identity);
-        return enemy;
+        GameObject unit = Instantiate(unit_data.Unit_object, new Vector3(生成場所の指定), Quaternion.identity);
+        return unit;
     }
+
+    ↓タグのつけ方は多分これ
+    unit_data.Unit_object.tag = ("タグ名");
     */
+
     #endregion
 }
