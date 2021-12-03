@@ -9,7 +9,7 @@ public class Unit_data : ScriptableObject
         short_range_unit,   //近距離ユニット
         long_range_unit,    //遠距離ユニット
         machine_unit,       //兵器ユニット
-        strategic_card      //戦略カード
+        strategy_card     //計略カード
     }
     [SerializeField,Header("ユニット名")]
     private string unit_name;
@@ -19,6 +19,9 @@ public class Unit_data : ScriptableObject
 
     [SerializeField, Header("ユニットプレハブ")]
     private GameObject unit_object;
+
+    [Header("ユニットの値段")]
+    public int Price;
 
     public string Unit_name { get { return unit_name; } private set { unit_name = value; } }
     public Unit_class unit_class { get { return unit_class; } private set { unit_class = value; } }

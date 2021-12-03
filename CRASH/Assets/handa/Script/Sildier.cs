@@ -45,7 +45,7 @@ public class Sildier : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
         foreach (var hit in raycastResults)
         {
-            if (hit.gameObject.CompareTag("Stage"))
+            if (hit.gameObject.CompareTag("SummonZone_p1"))
             {
                 transform.position = hit.gameObject.transform.position;
                 flg = false;

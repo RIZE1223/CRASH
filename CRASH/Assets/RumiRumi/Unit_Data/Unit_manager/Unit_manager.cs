@@ -9,7 +9,7 @@ public class Unit_manager : MonoBehaviour
 
     [SerializeField]
     public static List<Unit_data> unit_list { get; private set; }
-
+    private static GameObject unit;
 
     private void Awake()
     {
@@ -82,22 +82,25 @@ public class Unit_manager : MonoBehaviour
         }
     }
 
-    #region リスト化したユニットを生成するときはこう書くと出せるよ
-
-    /*
-    ↓呼び出すときはこう書く
-    Instantiate_unit(unit_list[必要なユニットの格納されているListの番号]);
-
-    ↓関数の中身はこれだよ
-    public static GameObject Instantiate_unit(Unit_data unit_data)
+    /// <summary>
+    /// ユニットの生成関数
+    /// </summary>
+    /// <param name="unit_data">生成したいオブジェクトデータ</param>
+    /// <param name="vec">生成したい場所</param>
+    /// /// <param name="player">生成を求めているプレイヤーの判別、１なら左、２なら右</param>
+    /// <returns></returns>
+    public static GameObject Instantiate_unit(Unit_data unit_data , Vector3 vec ,int player)
     {
-        GameObject unit = Instantiate(unit_data.Unit_object, new Vector3(生成場所の指定), Quaternion.identity);
+        if (player == 1)
+        {
+            unit_data.Unit_object.tag = ("Unit1");  //左のプレイヤー側のユニットであるタグをつける
+            unit = Instantiate(unit_data.Unit_object, vec, Quaternion.identity);
+        }
+        else if (player == 2)
+        {
+            unit_data.Unit_object.tag = ("Unit2");  ////右のプレイヤー側のユニットであるタグをつける
+            unit = Instantiate(unit_data.Unit_object, vec, new Quaternion(0,180,0,1));  //右プレイヤー側のユニットの場合は
+        }
         return unit;
     }
-
-    ↓タグのつけ方は多分これ
-    unit_data.Unit_object.tag = ("タグ名");
-    */
-
-    #endregion
 }

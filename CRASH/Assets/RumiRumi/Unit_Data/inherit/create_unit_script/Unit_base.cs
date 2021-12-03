@@ -12,7 +12,9 @@ public class Unit_base : MonoBehaviour
         scout,      //斥候
         catapult,   //投石器
 
-        strategic,  //戦略系
+//---------------------------------
+        strategy,  //計略系
+
     }
 
     [SerializeField, Header("ユニットタイプ")]

@@ -1,16 +1,8 @@
-public class Test_unit : Unit
+public class Pikeman : Unit
 {
     protected override void Move()
     {
-        //w‰c–‚ÌˆÚ“®
-        if (gameObject.CompareTag("Unit1"))
-        {
-            transform.Translate(unit_model.move_speed, 0f, 0f);
-        }
-        else if (gameObject.CompareTag("Unit2"))
-        {
-            transform.Translate(unit_model.move_speed, 0f, 0f);
-        }
+        transform.Translate(unit_model.move_speed, 0f, 0f);
     }
 
     protected override void Attack()
