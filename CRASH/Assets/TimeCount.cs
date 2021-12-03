@@ -8,6 +8,7 @@ public class TimeCount : MonoBehaviour
     //カウントダウン
     public float countdown = 5.0f;
 
+    // 資金の処理
     public float time2 = 0.0f;
     public float money = 0;
 
@@ -19,10 +20,11 @@ public class TimeCount : MonoBehaviour
         //時間をカウントダウンする
         countdown -= Time.deltaTime;
 
+        // 資金用の処理の秒数をカウント
         time2 += Time.deltaTime;
 
-        //時間を表示する
-        timeText.text = countdown.ToString("f1") + "秒" + "資金：" + money.ToString("f1");
+        //時間と資金を表示する
+        timeText.text = countdown.ToString("f1") + "秒\n" + "資金：" + money.ToString("f1");
 
 
         //countdownが0以下になったとき
@@ -31,7 +33,7 @@ public class TimeCount : MonoBehaviour
             timeText.text = "Time Up!!";
         }
 
-        // 資金
+        // ３秒毎に資金を１追加
         if(time2 >= 3)
         {
             money += 1;
