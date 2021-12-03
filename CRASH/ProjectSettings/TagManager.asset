@@ -9,6 +9,8 @@ TagManager:
   - Unit2
   - Castle1
   - Castle2
+  - SummonZone_p1
+  - SummonZone_p2
   layers:
   - Default
   - TransparentFX

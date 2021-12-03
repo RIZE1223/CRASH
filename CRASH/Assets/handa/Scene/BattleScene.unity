@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 390555766}
   m_Layer: 5
   m_Name: Stage_top
-  m_TagString: Stage
+  m_TagString: SummonZone_p1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1301,7 +1301,7 @@ GameObject:
   - component: {fileID: 1876063717}
   m_Layer: 5
   m_Name: Stage_center
-  m_TagString: Stage
+  m_TagString: SummonZone_p1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1416,7 +1416,7 @@ GameObject:
   - component: {fileID: 1925181394}
   m_Layer: 5
   m_Name: Stage_bottom
-  m_TagString: Stage
+  m_TagString: SummonZone_p1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
