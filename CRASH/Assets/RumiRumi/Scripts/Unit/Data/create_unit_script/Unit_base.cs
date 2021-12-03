@@ -11,6 +11,8 @@ public class Unit_base : MonoBehaviour
         pikeman,    //槍兵
         scout,      //斥候
         catapult,   //投石器
+
+        strategic,  //戦略系
     }
 
     [SerializeField, Header("ユニットタイプ")]

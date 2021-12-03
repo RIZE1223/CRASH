@@ -8,7 +8,8 @@ public class Unit_data : ScriptableObject
         castle, //城
         short_range_unit,   //近距離ユニット
         long_range_unit,    //遠距離ユニット
-        machine_unit        //兵器ユニット
+        machine_unit,       //兵器ユニット
+        strategic_card      //戦略カード
     }
     [SerializeField,Header("ユニット名")]
     private string unit_name;
