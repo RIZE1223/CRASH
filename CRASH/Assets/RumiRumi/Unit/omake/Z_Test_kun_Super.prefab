@@ -141,5 +141,5 @@ MonoBehaviour:
   attack_delay: 1
   attack_cool_time: 1
   defense_power: 50
-  move_speed: 1
+  move_speed: 5
   now_attack_delay: 0
