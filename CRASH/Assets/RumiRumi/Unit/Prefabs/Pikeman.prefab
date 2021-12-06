@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7143713487676843410}
   m_Layer: 7
   m_Name: Pikeman
-  m_TagString: Unit2
+  m_TagString: Unit1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

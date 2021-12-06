@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &5113293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5113294}
+  m_Layer: 0
+  m_Name: Unit_generation_location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5113294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5113293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192873990
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +232,7 @@ GameObject:
   - component: {fileID: 390555768}
   - component: {fileID: 390555766}
   m_Layer: 5
-  m_Name: Stage_top
+  m_Name: Stage
   m_TagString: SummonZone_p1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -550,7 +580,7 @@ GameObject:
   - component: {fileID: 473689187}
   - component: {fileID: 473689188}
   m_Layer: 5
-  m_Name: Slot
+  m_Name: PlayerHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -658,37 +688,6 @@ MonoBehaviour:
   - {fileID: 4474960291399491450, guid: 0d81e75f7134882489f30813555a13c0, type: 3}
   - {fileID: 8374687949895482891, guid: 8c14782fd2a1ed645bc7ca4fe8ef59e9, type: 3}
   - {fileID: 4858603483256386292, guid: 176b93bfa1b4c1b4ea3187a629b49617, type: 3}
-  cooltime: 10
---- !u!1 &896773941
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 896773942}
-  m_Layer: 0
-  m_Name: Unit_generation_location
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &896773942
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 896773941}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &928228617
 GameObject:
   m_ObjectHideFlags: 0

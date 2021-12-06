@@ -6,7 +6,6 @@ public class CreateCard : MonoBehaviour
 {
     [SerializeField] private Transform PlayerHand;  //場所参照
     [SerializeField] private List<GameObject> cards = new List<GameObject>();  //カードリスト作成
-    public int cooltime = 10;
 
     private void FixedUpdate()
     {
