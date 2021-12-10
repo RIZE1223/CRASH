@@ -46,7 +46,7 @@ public class Timecount2 : MonoBehaviour
             money++;
         }
 
-        if (countdown == 0)
+        if (countdown <= 0)
         {
             countdownText.text = "Time Up!!";
         }
