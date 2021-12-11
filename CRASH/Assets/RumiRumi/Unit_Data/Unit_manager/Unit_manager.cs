@@ -18,7 +18,6 @@ public class Unit_manager : MonoBehaviour
         //Unit_data‚ğƒ[ƒh
         unit_list = new List<Unit_data>(dataFiles);
     }
-        
 
     public void AddAttack(Unit us)
     {

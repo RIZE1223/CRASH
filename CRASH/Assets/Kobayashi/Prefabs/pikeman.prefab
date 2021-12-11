@@ -138,3 +138,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   summon_number: 2
+  unit_generation_location: {fileID: 6946654712567567819, guid: 25d03cdb4b62179468ae2d28145cab34, type: 3}
