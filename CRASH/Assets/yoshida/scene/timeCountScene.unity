@@ -308,7 +308,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "10:00 \u8CC7\u91D1:0"
 --- !u!222 &429768359
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -59,7 +59,7 @@ public class Timecount2 : MonoBehaviour
     {
         // 引数で受け取った値を[分:秒]に変換して表示する
         // ToString("00")でゼロプレースフォルダーして、１桁のときは頭に0をつける
-        countdownText.text = ((int)(limitTime / 60)).ToString("00") + ":" + ((int)limitTime % 60).ToString("00\n") + "資金:" + money.ToString("0");
+        countdownText.text = ((int)(limitTime / 60)).ToString("00") + ":" + ((int)limitTime % 60).ToString("00  ")+ "資金:" + money.ToString("0");
     }
 
 }
