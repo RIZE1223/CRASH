@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4474960291399491455}
   - component: {fileID: 4474960291399491452}
   m_Layer: 5
-  m_Name: pikeman
+  m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2268da905bdcb724c8d10b5d6554b662, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 013e817ac94e9dd479d43ce42335acf6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -138,4 +138,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   summon_number: 2
-  unit_generation_location: {fileID: 6946654712567567819, guid: 25d03cdb4b62179468ae2d28145cab34, type: 3}
+  unit_parent: {fileID: 0}
