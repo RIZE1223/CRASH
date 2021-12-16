@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Unit_move    //ユニットの行動
 {
@@ -46,6 +47,15 @@ public class Unit : MonoBehaviour
         {
             //RiP
             Destroy(this.gameObject);
+
+            if(gameObject.CompareTag("Castle1"))
+            {
+                SceneManager.LoadScene("");
+            }
+            else if (gameObject.CompareTag("Castle2"))
+            {
+                SceneManager.LoadScene("WinScene");
+            }
         }
 
         else if (unit_model.hp > 0)

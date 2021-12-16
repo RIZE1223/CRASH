@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3051436444332302372}
   m_Layer: 7
   m_Name: Archer
-  m_TagString: Unit2
+  m_TagString: Unit1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 745587725035742540}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 2268da905bdcb724c8d10b5d6554b662, type: 3}
-  m_Color: {r: 1, g: 0.18396229, b: 0.18396229, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b1c52e709ced88341ba42686b9d90f3a, type: 3}
+  m_Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   attack_delay: 0
   attack_cool_time: 3
   defense_power: 10
-  move_speed: 0.1
+  move_speed: 0.01
   now_attack_delay: 0
 --- !u!114 &3051436444332302372
 MonoBehaviour:

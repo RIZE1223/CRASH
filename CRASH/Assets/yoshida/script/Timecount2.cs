@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Timecount2 : MonoBehaviour
 {
@@ -49,6 +51,7 @@ public class Timecount2 : MonoBehaviour
         if (countdown <= 0)
         {
             countdownText.text = "Time Up!!";
+            SceneManager.LoadScene("draw");
         }
     }
 
