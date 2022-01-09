@@ -133,4 +133,12 @@ public class Unit : MonoBehaviour
                 target = co.gameObject;     //攻撃対象を選択
         }
     }
+
+    protected virtual void OnCollisionExit2D(Collision2D co)
+    {
+        if(co.gameObject == target.gameObject)
+        {
+            target = null;  //攻撃範囲外に出た場合はtargetから外すよ
+        }
+    }
 }
