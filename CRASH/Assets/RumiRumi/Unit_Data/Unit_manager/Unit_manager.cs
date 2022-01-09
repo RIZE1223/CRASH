@@ -9,7 +9,13 @@ public class Unit_manager : MonoBehaviour
 
     [SerializeField]
     public static List<Unit_data> unit_list { get; private set; }
+    [SerializeField]
+    public static List<Unit_data> strategy_list { get; private set; }
     private static GameObject unit;
+    [Header("プレイヤー１の金デース")]
+    public int UnitMoney = 50;
+    [Header("プレイヤー２の金デース")]
+    public int UnitMoney2 = 0;
 
     private void Awake()
     {
@@ -17,6 +23,8 @@ public class Unit_manager : MonoBehaviour
         Unit_data[] dataFiles = Resources.LoadAll<Unit_data>("Unit_data");
         //Unit_dataをロード
         unit_list = new List<Unit_data>(dataFiles);
+        Unit_data[] dataFiles2 = Resources.LoadAll<Unit_data>("Strategy_data");
+        strategy_list = new List<Unit_data>(dataFiles2);
     }
 
     public void AddAttack(Unit us)
@@ -65,9 +73,9 @@ public class Unit_manager : MonoBehaviour
     /// <param name="attack_power">攻撃する側の攻撃力</param>
     /// <param name="defense_power">攻撃を受ける側の防御力</param>
     /// <returns></returns>
-    public int Attack_calculation(int attack_power,int defense_power)
+    public int Attack_calculation(int attack_power,int defense_power,GameObject attack_name)
     {
-        Debug.Log(attack_power - defense_power);
+        Debug.Log((attack_name)+"が"+(attack_power - defense_power)+"ダメージを与えた");
         if (attack_power > defense_power)
         {
             //Debug.Log("以下のダメージが入ったよ");

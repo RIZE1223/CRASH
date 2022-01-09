@@ -1,4 +1,4 @@
-public class Scout : Unit
+public class Z_Test_kun_Super_unit : Unit
 {
     protected override void Move()
     {

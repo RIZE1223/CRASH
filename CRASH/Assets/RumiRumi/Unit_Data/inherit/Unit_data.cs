@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New_Unit_Data", menuName = "Create_Unit_Data")]
+[CreateAssetMenu(fileName = "New_Card_Data", menuName = "Create_Card_Data")]
 public class Unit_data : ScriptableObject
 {
     public enum Unit_class    //ユニットのクラス
@@ -11,16 +11,16 @@ public class Unit_data : ScriptableObject
         machine_unit,       //兵器ユニット
         strategy_card     //計略カード
     }
-    [SerializeField,Header("ユニット名")]
+    [SerializeField,Header("カード名")]
     private string unit_name;
 
-    [SerializeField, Header("ユニットクラス")]
+    [SerializeField, Header("カードクラス")]
     private Unit_class unit_type;
 
-    [SerializeField, Header("ユニットプレハブ")]
+    [SerializeField, Header("カードプレハブ")]
     private GameObject unit_object;
 
-    [Header("ユニットの値段")]
+    [Header("カードの値段")]
     public int Price;
 
     public string Unit_name { get { return unit_name; } private set { unit_name = value; } }

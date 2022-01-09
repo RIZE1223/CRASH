@@ -11,6 +11,8 @@ TagManager:
   - Castle2
   - SummonZone_p1
   - SummonZone_p2
+  - StrategyCard
+  - Canvas
   layers:
   - Default
   - TransparentFX

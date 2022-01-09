@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class AI : MonoBehaviour
+public class AiManager : MonoBehaviour
 {
     [SerializeField]
     private int timer;    //生成する時間
@@ -13,9 +14,17 @@ public class AI : MonoBehaviour
     [SerializeField]
     private GameObject bottom;//生成場所参照
 
+    public GameObject unit_parent;
+    private GameObject unit_child;
+
     private Vector3 pos;
     private bool isSummon;
     private int summon_count;
+
+    private void Awake()
+    {
+        unit_parent = GameObject.Find("Unit_generation_location");
+    }
     private void Start()
     {
         isSummon = false;
@@ -46,8 +55,8 @@ public class AI : MonoBehaviour
         }
         #endregion
 
-        Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
-
+        unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+        unit_child.transform.parent = unit_parent.transform;
         summon_count++;
         isSummon = false;
     }

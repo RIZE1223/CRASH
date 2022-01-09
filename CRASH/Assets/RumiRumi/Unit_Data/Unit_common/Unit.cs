@@ -18,7 +18,8 @@ public class Unit : MonoBehaviour
 
     [Header("攻撃対象")]
     public GameObject target = null;  //攻撃するターゲットを格納
-
+    [Header("武器がある場合はこちらに格納")]
+    public Weapon attackZone = null;
     [HideInInspector]
     public bool isCool_down;    //クールダウンしてるかみるYO!
     private bool isAttack_reserve;  //攻撃予約を行っているかをみるYO!
@@ -41,7 +42,13 @@ public class Unit : MonoBehaviour
     //------------------------------------------------------------------------------
 
     private void FixedUpdate()
-    {
+    {   
+        //武器の攻撃範囲に入ったらターゲットに固定
+        if(target == null && attackZone != null)
+        {
+            if(attackZone.weaponTarget != null)
+            target = attackZone.weaponTarget;
+        }
         //体力が０以下ならオブジェクトを削除
         if (unit_model.hp <= 0)
         {
@@ -128,16 +135,17 @@ public class Unit : MonoBehaviour
         //各ユニットごとに書き換えてね
     }
 
-    //------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
 
     protected virtual void OnCollisionEnter2D(Collision2D co)
     {
-        if (gameObject.CompareTag("Unit1"))
+        if (gameObject.CompareTag("Unit1") && target == null)
         {
             if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2"))
                 target = co.gameObject;//攻撃対象を選択
         }
-        else if (gameObject.CompareTag("Unit2"))
+        else if (gameObject.CompareTag("Unit2") && target == null)
         {
             if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1"))
                 target = co.gameObject;     //攻撃対象を選択

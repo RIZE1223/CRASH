@@ -9,7 +9,7 @@ public class CreateCard : MonoBehaviour
 
     private void Start()
     {
-        Create();
+        //Create();
     }
     /// <summary>
     /// ƒJ[ƒh‚ğ¶¬‚·‚é

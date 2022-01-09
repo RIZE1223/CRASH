@@ -8,19 +8,21 @@ using UnityEngine.SceneManagement;
 public class Timecount2 : MonoBehaviour
 {
     [SerializeField, Header("制限時間の設定値")]
-    public int countdown;
+    public int _countdown;
+    private static int countdown;
     [SerializeField, Header("制限時間の表示")]
     public Text countdownText;
 
     private int currentTime;    // 現在の残り時間（不要な場合は宣言しない）
     private float timer;        // 時間計測用
 
-    private int money;          // 資金の数
     private float moneyTimer;   // 時間計測用(資金)
 
-    void Start()
+    private void Awake()
     {
-       //countdownをcurrentTimeに書き換える
+        countdown = _countdown;
+
+        //countdownをcurrentTimeに書き換える
         currentTime = countdown;
     }
 
@@ -45,7 +47,7 @@ public class Timecount2 : MonoBehaviour
         if (moneyTimer >= 3)
         {
             moneyTimer = 0;
-            money++;
+            GeneralManager.instance.unitManager.UnitMoney++;
         }
 
         if (countdown <= 0)
@@ -58,13 +60,12 @@ public class Timecount2 : MonoBehaviour
     /// <summary>
     /// 制限時間を更新して[分:秒]で表示する
     /// </summary>
-    private void DisplayCountTime(int limitTime)
+    public void DisplayCountTime(int limitTime)
     {
         // 引数で受け取った値を[分:秒]に変換して表示する
         // ToString("00")でゼロプレースフォルダーして、１桁のときは頭に0をつける
-        countdownText.text = ((int)(limitTime / 60)).ToString("00") + ":" + ((int)limitTime % 60).ToString("00  ")+ "資金:" + money.ToString("0");
+        countdownText.text = ((int)(limitTime / 60)).ToString("00") + ":" + ((int)limitTime % 60).ToString("00  ")+ "資金:" + GeneralManager.instance.unitManager.UnitMoney.ToString("0");
     }
-
 }
 
 /*

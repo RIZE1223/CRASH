@@ -14,7 +14,6 @@ public class Unit_base : MonoBehaviour
 
 //---------------------------------
         strategy,  //計略系
-
     }
 
     [SerializeField, Header("ユニットタイプ")]

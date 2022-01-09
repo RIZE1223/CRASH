@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1791954611630152321}
   - component: {fileID: 1791954611630152320}
   - component: {fileID: 1791954611630152335}
-  - component: {fileID: 1791954611630152334}
   - component: {fileID: 1791954611630152333}
   - component: {fileID: 7535858365000665168}
+  - component: {fileID: 1005573053735132178}
   m_Layer: 7
   m_Name: Cavalry
   m_TagString: Unit2
@@ -30,8 +30,9 @@ Transform:
   m_GameObject: {fileID: 1791954611630152331}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 50, y: 50, z: 1}
+  m_Children:
+  - {fileID: 466080542640667345}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -107,22 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!58 &1791954611630152334
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791954611630152331}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.5
 --- !u!114 &1791954611630152333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +127,7 @@ MonoBehaviour:
   attack_delay: 0
   attack_cool_time: 5
   defense_power: 10
-  move_speed: 0.05
+  move_speed: 15
   now_attack_delay: 0
 --- !u!114 &7535858365000665168
 MonoBehaviour:
@@ -158,4 +143,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit_move: 0
   target: {fileID: 0}
+  attackZone: {fileID: 0}
   isCool_down: 0
+--- !u!58 &1005573053735132178
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791954611630152331}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.85183686, y: 0}
+  serializedVersion: 2
+  m_Radius: 3.7481632
+--- !u!1 &9048289873179954817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466080542640667345}
+  - component: {fileID: 5651809292263710225}
+  - component: {fileID: 7755326328719580259}
+  m_Layer: 0
+  m_Name: AttackZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &466080542640667345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048289873179954817}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.07, y: 0, z: 0}
+  m_LocalScale: {x: 5.2031465, y: 17.21181, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1791954611630152321}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5651809292263710225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048289873179954817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919c0ecbbc2bb50439778b2e984fd094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponTarget: {fileID: 0}
+--- !u!70 &7755326328719580259
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048289873179954817}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.99, y: 0.64}
+  m_Direction: 0

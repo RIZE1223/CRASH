@@ -11,8 +11,11 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public int summon_number;
 
     public GameObject unit_parent;
-
     private GameObject unit_child;
+    [Header("ユニットならFalse,計略カードならTrue")]
+    public bool isCardType; //ユニットならTrue,計略カードならFalse
+    [Header("プレイヤー１ならFalse,プレイヤー２ならTrue")]
+    public bool isPlayer;
     //ドラッグ前の位置
     private Vector2 startPos;
 
@@ -58,25 +61,31 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (hit.gameObject.CompareTag("SummonZone_p1")) //      マウスのレイが範囲以内に当たってる場合
             {
-                unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[summon_number], this.transform.position, 1);
-                unit_child.transform.parent = unit_parent.transform;
-
-                //transform.position = hit.gameObject.transform.position;
+                if (!isCardType)
+                {
+                    if (GeneralManager.instance.unitManager.UnitMoney > Unit_manager.unit_list[summon_number].Price)
+                    {
+                        GeneralManager.instance.unitManager.UnitMoney -= Unit_manager.unit_list[summon_number].Price;
+                        if(!isPlayer)
+                            unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[summon_number], this.transform.position, 1);
+                        else
+                            unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[summon_number], this.transform.position, 2);
+                        unit_child.transform.parent = unit_parent.transform;
+                    }
+                }
+                else if(isCardType)
+                {
+                    GeneralManager.instance.unitManager.UnitMoney -= Unit_manager.strategy_list[summon_number].Price;
+                    if(!isPlayer)
+                        unit_child = Unit_manager.Instantiate_unit(Unit_manager.strategy_list[summon_number], this.transform.position, 1);
+                    else
+                        unit_child = Unit_manager.Instantiate_unit(Unit_manager.strategy_list[summon_number], this.transform.position, 2);
+                }
                 flg = false;
-
-                GetComponent<Image>().raycastTarget = false;
-
+                GetComponent<Image>().raycastTarget = true;
             }
         }
 
-        if (flg)    //範囲外だったら最初の場所に戻る（マウスをクリックした場所）
-        {
-            transform.position = startPos;
-        }
-        else
-        {
-
-            Destroy(gameObject);
-        }
+        transform.position = startPos;
     }
 }
