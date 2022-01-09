@@ -13,7 +13,7 @@ public class Unit_model : Unit_base
     [Header("防御力")]
     public int defense_power;   //ユニットの防御力
     [Header("移動速度")]
-    public int move_speed;  //ユニットの移動速度
+    public float move_speed;  //ユニットの移動速度
     [HideInInspector]
     public float now_attack_delay;    //ディレイ経過時間計算用 / 使用する場所はUnit_Manager
 

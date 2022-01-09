@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Unit_move    //ユニットの行動
 {
@@ -22,7 +23,7 @@ public class Unit : MonoBehaviour
     public bool isCool_down;    //クールダウンしてるかみるYO!
     private bool isAttack_reserve;  //攻撃予約を行っているかをみるYO!
 
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
 
     private void Awake()
     {
@@ -37,7 +38,7 @@ public class Unit : MonoBehaviour
     }
 
 
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
 
     private void FixedUpdate()
     {
@@ -46,6 +47,15 @@ public class Unit : MonoBehaviour
         {
             //RiP
             Destroy(this.gameObject);
+
+            if(gameObject.CompareTag("Castle1"))
+            {
+                SceneManager.LoadScene("");
+            }
+            else if (gameObject.CompareTag("Castle2"))
+            {
+                SceneManager.LoadScene("WinScene");
+            }
         }
 
         else if (unit_model.hp > 0)
@@ -84,7 +94,7 @@ public class Unit : MonoBehaviour
             }
             isCool_down = true;  //攻撃後のクールタイムを開始を指示
         }
-        
+
         if (target == null)  //攻撃対象を倒したか確認
         {
             unit_move = Unit_move.Moving_method;   //移動開始
@@ -118,7 +128,7 @@ public class Unit : MonoBehaviour
         //各ユニットごとに書き換えてね
     }
 
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
 
     protected virtual void OnCollisionEnter2D(Collision2D co)
     {
@@ -134,11 +144,28 @@ public class Unit : MonoBehaviour
         }
     }
 
-    protected virtual void OnCollisionExit2D(Collision2D co)
+    protected virtual void OnCollisionStay2D(Collision2D co)
     {
-        if(co.gameObject == target.gameObject)
+        //if(co.gameObject == target.gameObject)
+        //{
+        //    target = null;  //攻撃範囲外に出た場合はtargetから外すよ
+        //}
+        //else
+        //{
+        //    return;
+        //}
+        if (target == null)
         {
-            target = null;  //攻撃範囲外に出た場合はtargetから外すよ
+            if (gameObject.CompareTag("Unit1"))
+            {
+                if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2"))
+                    target = co.gameObject;//攻撃対象を選択
+            }
+            else if (gameObject.CompareTag("Unit2"))
+            {
+                if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1"))
+                    target = co.gameObject;     //攻撃対象を選択
+            }
         }
     }
 }

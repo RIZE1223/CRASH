@@ -18,7 +18,6 @@ public class Unit_manager : MonoBehaviour
         //Unit_dataをロード
         unit_list = new List<Unit_data>(dataFiles);
     }
-        
 
     public void AddAttack(Unit us)
     {
@@ -74,6 +73,15 @@ public class Unit_manager : MonoBehaviour
             //Debug.Log("以下のダメージが入ったよ");
             //Debug.Log(attack_power - defense_power);
             return attack_power - defense_power;
+        }
+        else if (attack_power < defense_power)
+        {
+            //攻撃力がディフェンス力の方が上回っていたばあい1ダメージ与えるよ君
+            return 1;
+        }
+        else if (attack_power == defense_power)  
+        {
+            return 0;
         }
         else //何らかのエラーが起きた場合はこちらへ～
         {
