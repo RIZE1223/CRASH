@@ -43,7 +43,6 @@ public class Unit_manager : MonoBehaviour
 
         for (int i = 0; i < attackInfos.Count; i++)
         {
-            Debug.Log(i);
             if (attackInfos[i] != null && attackInfos[i].GetComponent<Unit>().isCool_down == false)
             {
                 attackInfos[i].GetComponent<Unit_model>().now_attack_delay += elapsed_time;
