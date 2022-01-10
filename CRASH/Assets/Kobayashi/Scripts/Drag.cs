@@ -13,7 +13,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public GameObject unit_parent;
     private GameObject unit_child;
     [Header("ユニットならFalse,計略カードならTrue")]
-    public bool isCardType; //ユニットならTrue,計略カードならFalse
+    public bool isCardType; //ユニットならFalse,計略カードならTrue
     [Header("プレイヤー１ならFalse,プレイヤー２ならTrue")]
     public bool isPlayer;
     //ドラッグ前の位置
@@ -59,31 +59,37 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         foreach (var hit in raycastResults)
         {
-            if (hit.gameObject.CompareTag("SummonZone_p1")) //      マウスのレイが範囲以内に当たってる場合
+            if (!isCardType)
             {
-                if (!isCardType)
+                if (hit.gameObject.CompareTag("SummonZone_p1")) //      マウスのレイが範囲以内に当たってる場合
                 {
                     if (GeneralManager.instance.unitManager.UnitMoney > Unit_manager.unit_list[summon_number].Price)
                     {
                         GeneralManager.instance.unitManager.UnitMoney -= Unit_manager.unit_list[summon_number].Price;
-                        if(!isPlayer)
+                        if (!isPlayer)
                             unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[summon_number], this.transform.position, 1);
                         else
                             unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[summon_number], this.transform.position, 2);
                         unit_child.transform.parent = unit_parent.transform;
                     }
                 }
-                else if(isCardType)
+            }
+            else if (isCardType)
+            {
+                if (hit.gameObject.CompareTag("StrategyStage")) //      マウスのレイが範囲以内に当たってる場合
                 {
-                    GeneralManager.instance.unitManager.UnitMoney -= Unit_manager.strategy_list[summon_number].Price;
-                    if(!isPlayer)
-                        unit_child = Unit_manager.Instantiate_unit(Unit_manager.strategy_list[summon_number], this.transform.position, 1);
-                    else
-                        unit_child = Unit_manager.Instantiate_unit(Unit_manager.strategy_list[summon_number], this.transform.position, 2);
+                    if (GeneralManager.instance.unitManager.UnitMoney > Unit_manager.strategy_list[summon_number].Price)
+                    {
+                        GeneralManager.instance.unitManager.UnitMoney -= Unit_manager.strategy_list[summon_number].Price;
+                        if (!isPlayer)
+                            unit_child = Unit_manager.Instantiate_unit(Unit_manager.strategy_list[summon_number], this.transform.position, 1);
+                        else
+                            unit_child = Unit_manager.Instantiate_unit(Unit_manager.strategy_list[summon_number], this.transform.position, 2);
+                    }
                 }
+            }
                 flg = false;
                 GetComponent<Image>().raycastTarget = true;
-            }
         }
 
         transform.position = startPos;

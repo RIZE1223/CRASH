@@ -11,6 +11,7 @@ TagManager:
   - Castle2
   - SummonZone_p1
   - SummonZone_p2
+  - StrategyStage
   - StrategyCard
   - Canvas
   layers:

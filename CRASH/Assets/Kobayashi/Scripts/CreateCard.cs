@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreateCard : MonoBehaviour
 {
     [SerializeField] private Transform PlayerHand;  //場所参照
-    [SerializeField] private List<GameObject> cards = new List<GameObject>();  //カードリスト作成
+    //[SerializeField] private List<GameObject> cards = new List<GameObject>();  //カードリスト作成
 
     private void Start()
     {
@@ -23,8 +23,8 @@ public class CreateCard : MonoBehaviour
         {
             for (int i = 0; i <= 4; i++)
             {
-                int num = Random.Range(0, cards.Count); //0からカードのリストの数だけランダムでだす
-                GameObject.Instantiate(cards[num], PlayerHand);    //カード生成
+                //int num = Random.Range(0, cards.Count); //0からカードのリストの数だけランダムでだす
+                //GameObject.Instantiate(cards[num], PlayerHand);    //カード生成
             }
         }
         else
@@ -35,8 +35,8 @@ public class CreateCard : MonoBehaviour
             }
             for (int i = 0; i <= 4; i++)
             {
-                int num = Random.Range(0, cards.Count); //0からカードのリストの数だけランダムでだす
-                GameObject.Instantiate(cards[num], PlayerHand);    //カード生成
+                //int num = Random.Range(0, cards.Count); //0からカードのリストの数だけランダムでだす
+                //GameObject.Instantiate(cards[num], PlayerHand);    //カード生成
             }
         }
     }
