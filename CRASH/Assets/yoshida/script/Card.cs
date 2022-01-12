@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    // Start is called before the first frame update
+    int A;
+    int B;
+
+    public GameObject castle1HP;
+    public GameObject castle2HP;
+
     void Start()
     {
-        
+        A = castle1HP.GetComponent<Unit_model>().hp;
+        B = castle2HP.GetComponent<Unit_model>().hp;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        GameObject Castle1 = GameObject.Find("Player1Castle");
-        GameObject Castle2 = GameObject.Find("Player2Castle");
+
 
     }
 
@@ -26,9 +30,11 @@ public class Card : MonoBehaviour
         {
             if (Input.GetMouseButtonUp(0))
             {
-                Debug.Log("Œø‰Ê”­“®");
-                // Player1Castle‚ÌHP = Player2Castle‚ÌHP
-                // Player2Castle‚ÌHP = Player1Castle‚ÌHP‚É‚µ‚½‚¢‚¯‚Ç‚í‚©‚ç‚È‚¢‚©‚ç‚ ‚Æ‚Å•·‚­
+               // Debug.Log("Œø‰Ê”­“®");
+                castle1HP.GetComponent<Unit_model>().hp = B;
+                castle2HP.GetComponent<Unit_model>().hp = A;
+
+                Destroy(this.gameObject);
 
             }
         }

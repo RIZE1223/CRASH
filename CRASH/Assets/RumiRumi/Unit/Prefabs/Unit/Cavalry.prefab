@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1005573053735132178}
   m_Layer: 9
   m_Name: Cavalry
-  m_TagString: Unit1
+  m_TagString: Unit2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
