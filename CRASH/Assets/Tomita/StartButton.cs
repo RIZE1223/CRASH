@@ -15,6 +15,8 @@ public class StartButton : MonoBehaviour
     // Update is called once per frame
     void StartGame()
     {
+        GeneralManager.instance.unitManager.UnitMoney = 50;
+        GeneralManager.instance.unitManager.UnitMoney2 = 50;
         // GameScene‚ğƒ[ƒh
         SceneManager.LoadScene("mainBattleScene");
     }

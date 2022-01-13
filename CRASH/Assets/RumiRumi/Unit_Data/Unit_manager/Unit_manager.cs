@@ -26,6 +26,11 @@ public class Unit_manager : MonoBehaviour
         Unit_data[] dataFiles2 = Resources.LoadAll<Unit_data>("Strategy_data");
         strategy_list = new List<Unit_data>(dataFiles2);
     }
+    private void Start()
+    {
+        UnitMoney = 50;
+        UnitMoney2 = 50;
+    }
 
     public void AddAttack(Unit us)
     {

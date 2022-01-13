@@ -12503,6 +12503,10 @@ PrefabInstance:
       propertyPath: parentHp
       value: 
       objectReference: {fileID: 233895193}
+    - target: {fileID: 1500491011115565785, guid: 0f0260d4fc947eb4ab4d52d5fe0139e5, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1500491011115565790, guid: 0f0260d4fc947eb4ab4d52d5fe0139e5, type: 3}
       propertyPath: m_Name
       value: HPGauge
