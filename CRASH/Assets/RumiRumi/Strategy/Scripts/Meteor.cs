@@ -9,7 +9,6 @@ public class Meteor : MonoBehaviour
     [Header("攻撃ディレイ時間(攻撃アニメーションの時間)/秒")]
     public float attack_delay;  //攻撃モーション
     private float nowDelay; //現在のモーション時間
-    private bool isAttack = false;
 
     private void Update()
     {

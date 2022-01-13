@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HpBar : MonoBehaviour
 {
     private int maxHp = 0;
-    private int currentHp = 0;
+    private int currentHp = 0;  //現在の体力
     [Header("親オブジェクトの体力")]
     public Unit_model parentHp;
     [Header("数値を変えるスライダー")]
@@ -20,10 +20,8 @@ public class HpBar : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(currentHp > parentHp.hp)
-        {
-            currentHp = parentHp.hp;
-            slider.value = (float)currentHp / (float)maxHp;
-        }
+        currentHp = parentHp.hp;
+        slider.value = (float)currentHp / (float)maxHp;
+
     }
 }

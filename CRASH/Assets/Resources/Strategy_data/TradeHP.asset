@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b758efe78793d2a40ac453aa166209b0, type: 3}
   m_Name: TradeHP
   m_EditorClassIdentifier: 
-  unit_name: 
+  unit_name: "\u57CE\u306E\u4F53\u529B\u3092\u5165\u308C\u66FF\u3048\u308B\u541B"
   unit_type: 4
   unit_object: {fileID: 4169759488031792265, guid: 6f0fe276870917e45a2c511e61547c65, type: 3}
-  Price: 0
+  Price: 10
