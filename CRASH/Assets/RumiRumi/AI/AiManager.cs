@@ -17,8 +17,13 @@ public class AiManager : MonoBehaviour
     public GameObject unit_parent;
     private GameObject unit_child;
 
+    [SerializeField, Header("AI（ガチモード）")]
+    private bool isGati = false;
+    private bool isPlayer = true;
+
     private Vector3 pos;
     private bool isSummon;
+
     private int summon_count;
 
     private void Awake()
@@ -32,7 +37,7 @@ public class AiManager : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(!isSummon)
+        if (!isSummon)
             StartCoroutine(Summon(timer));
     }
 
@@ -52,6 +57,55 @@ public class AiManager : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(Random.Range(cool_time, cool_time)); //クールタイム計測開始
+        }
+        #endregion
+        var rmd = Random.Range(0, 100);
+
+        #region 生成数の決定
+        if (!isGati)
+        {
+            if (rmd > 53)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                }
+            }
+            else if (rmd >= 43)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                }
+            }
+            else if (rmd >= 35)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                }
+            }
+            else if (rmd >= 4)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                }
+            }
+            else if (rmd >= 3)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+            }
         }
         #endregion
 

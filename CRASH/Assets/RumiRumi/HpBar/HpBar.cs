@@ -22,6 +22,5 @@ public class HpBar : MonoBehaviour
     {
         currentHp = parentHp.hp;
         slider.value = (float)currentHp / (float)maxHp;
-
     }
 }

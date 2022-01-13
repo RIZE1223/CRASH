@@ -7,7 +7,14 @@ public class MassSummon_Card : MonoBehaviour
     private GameObject unit_child;
     private GameObject unit_parent;
 
-    // Start is called before the first frame update
+    [Header("攻撃ディレイ時間(攻撃アニメーションの時間)/秒")]
+    public float attack_delay;  //攻撃モーション
+    private float nowDelay; //現在のモーション時間
+    [SerializeField,Header("召喚する数")]
+    private int summons;
+    [SerializeField, Header("プレイヤー:１ならfalse,2ならtrue")]
+    private bool isPlayer = false;
+    private bool isUsed = false; //使われたらtrue
     void Start()
     {
         unit_parent = GameObject.Find("Unit_generation_location");
@@ -16,21 +23,33 @@ public class MassSummon_Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (attack_delay >= nowDelay)
+        {
+            nowDelay += Time.deltaTime;
+        }
+        else if (attack_delay < nowDelay && !isUsed)
+        {
+            SummonUnit(isPlayer, summons);
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void SummonUnit(bool _isPlayer , int _summons)
     {
-        if(collision.gameObject.tag == "SummonZone_p1")
+        isUsed = true;
+        for (int i = 0; i < _summons; i++)
         {
-            if(Input.GetMouseButtonUp(0))
+            if (!_isPlayer)
             {
                 unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, 4)], this.transform.position, 1);
-
-                unit_child.transform.position = unit_parent.transform.position;
-
-                Destroy(this.gameObject);
+                unit_child.transform.position = new Vector3(-1410, Random.Range(-560f,850f),0);
             }
+            else if(_isPlayer)
+            {
+                unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, 4)], this.transform.position, 2);
+                unit_child.transform.position = new Vector2(1410, Random.Range(-560f, 850f));
+            }
+            unit_child.transform.parent = unit_parent.transform;
         }
+        Destroy(this.gameObject);
     }
 }

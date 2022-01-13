@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d164d8ed4303c24bb4175f0be3cf295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack_delay: 0
+  summons: 5
+  isPlayer: 0
