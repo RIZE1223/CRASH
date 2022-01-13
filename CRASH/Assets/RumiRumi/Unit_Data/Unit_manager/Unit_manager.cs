@@ -15,7 +15,7 @@ public class Unit_manager : MonoBehaviour
     [Header("プレイヤー１の金デース")]
     public int UnitMoney = 50;
     [Header("プレイヤー２の金デース")]
-    public int UnitMoney2 = 0;
+    public int UnitMoney2 = 50;
 
     private void Awake()
     {
@@ -102,7 +102,7 @@ public class Unit_manager : MonoBehaviour
     /// </summary>
     /// <param name="unit_data">生成したいオブジェクトデータ</param>
     /// <param name="vec">生成したい場所</param>
-    /// /// <param name="player">生成を求めているプレイヤーの判別、１なら左、２なら右</param>
+    /// /// <param name="player">生成を求めているプレイヤーの判別、１なら左、２なら右 、３なら計略カード</param>
     /// <returns></returns>
     public static GameObject Instantiate_unit(Unit_data unit_data , Vector3 vec ,int player)
     {
@@ -115,6 +115,10 @@ public class Unit_manager : MonoBehaviour
         {
             unit_data.Unit_object.tag = ("Unit2");  ////右のプレイヤー側のユニットであるタグをつける
             unit = Instantiate(unit_data.Unit_object, vec, new Quaternion(0,180,0,1));  //右プレイヤー側のユニットの場合は
+        }
+        else if(player == 3)
+        {
+            unit = Instantiate(unit_data.Unit_object, vec, Quaternion.identity);
         }
         return unit;
     }

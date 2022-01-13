@@ -17,7 +17,8 @@ public class Timecount2 : MonoBehaviour
     private float timer;        // 時間計測用
 
     private float moneyTimer;   // 時間計測用(資金)
-
+    [SerializeField]
+    private bool isPlayer; //falseならプレイヤー１、trueならプレイヤー２
     private void Awake()
     {
         countdown = _countdown;
@@ -48,6 +49,7 @@ public class Timecount2 : MonoBehaviour
         {
             moneyTimer = 0;
             GeneralManager.instance.unitManager.UnitMoney++;
+            GeneralManager.instance.unitManager.UnitMoney2++;
         }
 
         if (countdown <= 0)
@@ -64,7 +66,14 @@ public class Timecount2 : MonoBehaviour
     {
         // 引数で受け取った値を[分:秒]に変換して表示する
         // ToString("00")でゼロプレースフォルダーして、１桁のときは頭に0をつける
-        countdownText.text = ((int)(limitTime / 60)).ToString("00") + ":" + ((int)limitTime % 60).ToString("00  ")+ "資金:" + GeneralManager.instance.unitManager.UnitMoney.ToString("0");
+        if (isPlayer)
+        {
+            countdownText.text = ((int)(limitTime / 60)).ToString("00") + ":" + ((int)limitTime % 60).ToString("00  ") + "資金:" + GeneralManager.instance.unitManager.UnitMoney.ToString("0");
+        }
+        else
+        {
+            countdownText.text = ((int)(limitTime / 60)).ToString("00") + ":" + ((int)limitTime % 60).ToString("00  ") + "資金:" + GeneralManager.instance.unitManager.UnitMoney2.ToString("0");
+        }
     }
 }
 

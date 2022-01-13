@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b758efe78793d2a40ac453aa166209b0, type: 3}
-  m_Name: Strategy_test
+  m_Name: Meteor
   m_EditorClassIdentifier: 
-  unit_name: "\u30DE\u30C0\u30F3\u30C6(\u30C6\u30B9\u30C8)"
+  unit_name: "\u30E1\u30C6\u30AA"
   unit_type: 4
-  unit_object: {fileID: 2799812447282452220, guid: c8ef0a5357938fa43ad120a1f5986703, type: 3}
-  Price: 1
+  unit_object: {fileID: 2799812447282452220, guid: d67ab4e11091baa4180290dc5a8f2301, type: 3}
+  Price: 5
