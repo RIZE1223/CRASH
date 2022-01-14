@@ -140,7 +140,7 @@ MonoBehaviour:
   unit_type: 5
   unit_data: {fileID: 11400000, guid: 1596dffab65bd5743a303c16bcce91f2, type: 2}
   hp: 100
-  attack_power: 50
+  attack_power: 10
   attack_delay: 0
   attack_cool_time: 2
   defense_power: 10

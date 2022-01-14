@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: 10d1f6f48368f21478282f906ee23840
   - enabled: 1
-    path: Assets/handa/Scene/BattleScene.unity
-    guid: 7bb9d2879c35125488543b64275a58f1
+    path: Assets/RumiRumi/mainBattleScene.unity
+    guid: e140f25edb5c4414fb3d67cd9c3a9cc6
   - enabled: 1
     path: Assets/handa/Scene/WinScene.unity
     guid: 158eb47638f91e941863fb661ec0d9b9
+  - enabled: 1
+    path: Assets/handa/LoseScene.unity
+    guid: a03d75c69cd0b634c91aff1a6b0bdf9c
   m_configObjects: {}

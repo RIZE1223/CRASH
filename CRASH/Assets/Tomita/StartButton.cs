@@ -20,5 +20,10 @@ public class StartButton : MonoBehaviour
         // GameScene‚ğƒ[ƒh
         SceneManager.LoadScene("mainBattleScene");
     }
+
+    public void OnClickStartButton()
+    {
+        SceneManager.LoadScene("mainBattleScene");
+    }
 }
 
