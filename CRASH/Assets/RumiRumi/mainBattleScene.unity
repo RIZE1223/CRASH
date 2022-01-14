@@ -12272,6 +12272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scout
       objectReference: {fileID: 0}
+    - target: {fileID: 8374687949895482891, guid: 8c14782fd2a1ed645bc7ca4fe8ef59e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c14782fd2a1ed645bc7ca4fe8ef59e9, type: 3}
 --- !u!224 &1808154975 stripped

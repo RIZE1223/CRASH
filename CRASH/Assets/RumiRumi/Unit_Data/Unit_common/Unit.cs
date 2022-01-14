@@ -57,7 +57,7 @@ public class Unit : MonoBehaviour
 
             if(gameObject.CompareTag("Castle1"))
             {
-                SceneManager.LoadScene("");
+                SceneManager.LoadScene("LoseScene");
             }
             else if (gameObject.CompareTag("Castle2"))
             {
