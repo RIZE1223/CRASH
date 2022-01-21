@@ -9,11 +9,16 @@ TagManager:
   - Unit2
   - Castle1
   - Castle2
+  - StrategyStage
   - SummonZone_p1
   - SummonZone_p2
-  - StrategyStage
-  - StrategyCard
+  - StrategyCard1
+  - StrategyCard2
+  - UnitCard1
+  - UnitCard2
   - Canvas
+  - Cursor1
+  - Cursor2
   layers:
   - Default
   - TransparentFX

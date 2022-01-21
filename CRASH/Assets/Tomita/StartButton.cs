@@ -16,7 +16,7 @@ public class StartButton : MonoBehaviour
     void StartGame()
     {
         GeneralManager.instance.unitManager.UnitMoney = 50;
-        GeneralManager.instance.unitManager.UnitMoney2 = 99999;
+        GeneralManager.instance.unitManager.UnitMoney2 = 50;
         // GameScene‚ğƒ[ƒh
         SceneManager.LoadScene("mainBattleScene");
     }

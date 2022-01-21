@@ -19,17 +19,15 @@ public class PageChange : MonoBehaviour
     {
         if (PageNum)
         {
-            Page1.transform.SetSiblingIndex(1);
-            Page2.transform.SetSiblingIndex(0);
+            Page1.SetActive(false);
+            Page2.SetActive(true);
             PageNum = false;
         }
         else if(!PageNum)
         {
-            Page1.transform.SetSiblingIndex(0);
-            Page2.transform.SetSiblingIndex(1);
+            Page1.SetActive(true);
+            Page2.SetActive(false);
             PageNum = true;
         }
-
     }
-
 }

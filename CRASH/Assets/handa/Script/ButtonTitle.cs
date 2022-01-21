@@ -7,6 +7,7 @@ public class ButtonTitle : MonoBehaviour
 {
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene("Title");
+        //SceneManager.LoadScene("Title");
+        SceneManager.LoadScene("mainBattleScene(tuusinn)");
     }
 }
