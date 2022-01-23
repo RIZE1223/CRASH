@@ -24,6 +24,12 @@ public class Unit : MonoBehaviour
     public bool isCool_down;    //クールダウンしてるかみるYO!
     private bool isAttack_reserve;  //攻撃予約を行っているかをみるYO!
 
+    //-------------------------
+    public bool isDragon;
+    GameObject _dragon;
+    ChangeDragon changeDragon;
+    //-------------------------
+
     //------------------------------------------------------------------------------
 
     private void Awake()
@@ -36,18 +42,21 @@ public class Unit : MonoBehaviour
     {
         isCool_down = false; //クールダウン中はAttack_speedの数値分待機しています。
         isAttack_reserve = false;
+
+        _dragon = GameObject.Find("ChangeDragon");
+        changeDragon = _dragon.GetComponent<ChangeDragon>();
     }
 
 
     //------------------------------------------------------------------------------
 
     private void FixedUpdate()
-    {   
+    {
         //武器の攻撃範囲に入ったらターゲットに固定
-        if(target == null && attackZone != null)
+        if (target == null && attackZone != null)
         {
-            if(attackZone.weaponTarget != null)
-            target = attackZone.weaponTarget;
+            if (attackZone.weaponTarget != null)
+                target = attackZone.weaponTarget;
         }
         //体力が０以下ならオブジェクトを削除
         if (unit_model.hp <= 0)
@@ -55,13 +64,26 @@ public class Unit : MonoBehaviour
             //RiP
             Destroy(this.gameObject);
 
-            if(gameObject.CompareTag("Castle1"))
+            if (gameObject.CompareTag("Castle1") && isDragon == false)
             {
-                SceneManager.LoadScene("");
+                changeDragon.SummonDragon1();
+                Debug.Log("ドラゴン召喚１");
             }
-            else if (gameObject.CompareTag("Castle2"))
+            else if (gameObject.CompareTag("Castle2") && isDragon == false)
             {
-                SceneManager.LoadScene("WinScene");
+                changeDragon.SummonDragon2();
+                Debug.Log("ドラゴン召喚2");
+            }
+
+            if (gameObject.CompareTag("Castle1") && isDragon == true)
+            {
+                //勝敗メソッド
+                WinLose.Win_Or_Lose(true);
+            }
+            else if (gameObject.CompareTag("Castle2") && isDragon == true)
+            {
+                //勝敗メソッド
+                WinLose.Win_Or_Lose(false);
             }
         }
 
@@ -136,7 +158,7 @@ public class Unit : MonoBehaviour
     }
 
 
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
 
     protected virtual void OnCollisionEnter2D(Collision2D co)
     {
