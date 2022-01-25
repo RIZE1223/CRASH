@@ -2,12 +2,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class cursor : MonoBehaviour
+public class moto_cursor : MonoBehaviour
 {
     [SerializeField, Header("カーソルの移動速度")]
     private int Speed;
     [Header("プレイヤー１ならFalse,プレイヤー２ならTrue")]
     public bool isPlayer;       //プレイヤーの識別
+
+    public const int Player1Num = 0;
+    public const int Player2Num = 1;
+
     [SerializeField, Header("ページ変更ボタン")]
     private GameObject pageChange;
     private Vector3 move;   //カーソル移動の際の座標
@@ -61,6 +65,8 @@ public class cursor : MonoBehaviour
         Clamp();    //移動に対する制限
 
         #region カードの移動→使用するまでの処理
+        var gamepad = Gamepad.all;
+
         if (!isUnderObjectMove && Gamepad.current.buttonSouth.isPressed && underObject != null)  //カードをつかんでいた場合下記の行動を実行
         {
             isUnderObjectMove = true;
@@ -102,16 +108,19 @@ public class cursor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //var  playerNum = isPlayer ? 1 : 0;
+        var gamepad = Gamepad.all;
+
         if (!isPlayer)
         {
-            if (!Gamepad.current.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard1") || collision.CompareTag("StrategyCard1"))
+            if (!gamepad[Player1Num].buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard1") || collision.CompareTag("StrategyCard1"))
             {
                 underObject = collision.gameObject;
             }
         }
         else if (isPlayer)
         {
-            if (!Gamepad.current.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard2") || collision.CompareTag("StrategyCard2"))
+            if (!gamepad[Player2Num].buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard2") || collision.CompareTag("StrategyCard2"))
             {
                 underObject = collision.gameObject;
             }

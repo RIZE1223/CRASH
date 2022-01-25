@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1778255948254409471}
   m_Layer: 9
   m_Name: Shielder
-  m_TagString: Unit1
+  m_TagString: Unit2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

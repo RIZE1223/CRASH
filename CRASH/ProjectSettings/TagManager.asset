@@ -19,6 +19,8 @@ TagManager:
   - Canvas
   - Cursor1
   - Cursor2
+  - StrategyCard
+  - Frame
   layers:
   - Default
   - TransparentFX
@@ -33,8 +35,8 @@ TagManager:
   - HpBar
   - 
   - 
-  - 
-  - 
+  - player1
+  - player2
   - 
   - 
   - 

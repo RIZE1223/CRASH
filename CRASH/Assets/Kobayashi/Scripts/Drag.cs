@@ -87,9 +87,12 @@ public class Drag: MonoBehaviour
                     var unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[summon_number], this.transform.position, 1);
                     unit_child.transform.parent = unit_parent.transform;
                 }
-                else if (isPlayer && zone.gameObject.CompareTag("SummonZone_p2"))
+            }
+            if(GeneralManager.instance.unitManager.UnitMoney2 > Unit_manager.unit_list[summon_number].Price && isSummonZone == true)
+            {
+                if (isPlayer && zone.gameObject.CompareTag("SummonZone_p2"))
                 {
-                    GeneralManager.instance.unitManager.UnitMoney -= Unit_manager.unit_list[summon_number].Price;
+                    GeneralManager.instance.unitManager.UnitMoney2 -= Unit_manager.unit_list[summon_number].Price;
                     var unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[summon_number], this.transform.position, 2);
                     unit_child.transform.parent = unit_parent.transform;
                 }
@@ -104,10 +107,21 @@ public class Drag: MonoBehaviour
             }
             else if (zone.gameObject.CompareTag("StrategyStage")) //      マウスのレイが範囲以内に当たってる場合
             {
-                if (GeneralManager.instance.unitManager.UnitMoney > Unit_manager.strategy_list[summon_number].Price)
+                if (gameObject.tag == "StrategyCard1")
                 {
-                    GeneralManager.instance.unitManager.UnitMoney -= Unit_manager.strategy_list[summon_number].Price;
-                    var unit_child = Unit_manager.Instantiate_unit(Unit_manager.strategy_list[summon_number], this.transform.position, 3);
+                    if (GeneralManager.instance.unitManager.UnitMoney > Unit_manager.strategy_list[summon_number].Price)
+                    {
+                        GeneralManager.instance.unitManager.UnitMoney -= Unit_manager.strategy_list[summon_number].Price;
+                        var unit_child = Unit_manager.Instantiate_unit(Unit_manager.strategy_list[summon_number], this.transform.position, 3);
+                    }
+                }
+                else if (gameObject.tag == "StrategyCard2")
+                {
+                    if (GeneralManager.instance.unitManager.UnitMoney2 > Unit_manager.strategy_list[summon_number].Price)
+                    {
+                        GeneralManager.instance.unitManager.UnitMoney2 -= Unit_manager.strategy_list[summon_number].Price;
+                        var unit_child = Unit_manager.Instantiate_unit(Unit_manager.strategy_list[summon_number], this.transform.position, 3);
+                    }
                 }
             }
            
