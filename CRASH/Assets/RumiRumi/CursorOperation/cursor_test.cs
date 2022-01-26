@@ -106,47 +106,56 @@ public class cursor_test : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isPlayer)
+        if (!isUnderObjectMove)
         {
-            if (!gamePad.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard1") || collision.CompareTag("StrategyCard1"))
+            if (!isPlayer)
             {
-                underObject = collision.gameObject;
+                if (!gamePad.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard1") || collision.CompareTag("StrategyCard1"))
+                {
+                    underObject = collision.gameObject;
+                }
             }
-        }
-        else
-        {
-            if (!gamePad.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard2") || collision.CompareTag("StrategyCard2"))
+            else
             {
-                underObject = collision.gameObject;
+                if (!gamePad.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard2") || collision.CompareTag("StrategyCard2"))
+                {
+                    underObject = collision.gameObject;
+                }
             }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!isPlayer)
+        if (!isUnderObjectMove)
         {
-            if (!gamePad.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard1") || collision.CompareTag("StrategyCard1"))
+            if (!isPlayer)
             {
-                if (underObject == collision.gameObject)
-                    return;
-                underObject = collision.gameObject;
+                if (!gamePad.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard1") || collision.CompareTag("StrategyCard1"))
+                {
+                    if (underObject == collision.gameObject)
+                        return;
+                    underObject = collision.gameObject;
+                }
             }
-        }
-        else
-        {
-            if (!gamePad.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard2") || collision.CompareTag("StrategyCard2"))
+            else
             {
-                if (underObject == collision.gameObject)
-                    return;
-                underObject = collision.gameObject;
+                if (!gamePad.buttonEast.isPressed && underObject == null && collision.CompareTag("UnitCard2") || collision.CompareTag("StrategyCard2"))
+                {
+                    if (underObject == collision.gameObject)
+                        return;
+                    underObject = collision.gameObject;
+                }
             }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!gamePad.buttonSouth.isPressed && underObject != null && underObject != collision)
+        if (!isUnderObjectMove)
         {
-            underObject = null;
+            if (!gamePad.buttonSouth.isPressed && underObject != null && underObject != collision)
+            {
+                underObject = null;
+            }
         }
     }
 }

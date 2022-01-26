@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 2799812447282452198}
   - component: {fileID: 2799812447282452199}
   - component: {fileID: 2799812447282452216}
-  - component: {fileID: 2720933936233692520}
-  - component: {fileID: 4138363280595832111}
+  - component: {fileID: 2799812447282452217}
+  - component: {fileID: -4222946987517351368}
   m_Layer: 5
-  m_Name: Meteor
-  m_TagString: StrategyCard
+  m_Name: LostHp2
+  m_TagString: SummonZone_p2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,22 +100,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2720933936233692520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799812447282452220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32152d61cb8dbf64ab4e8c264f319429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitList: []
-  attack_delay: 1
---- !u!58 &4138363280595832111
-CircleCollider2D:
+--- !u!61 &2799812447282452217
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,9 +113,33 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.35, y: 0}
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 585
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &-4222946987517351368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799812447282452220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4623498746e09a14284b4d8ec8617680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitList: []
+  attack_delay: 1
 --- !u!1001 &5645956996724117463
 PrefabInstance:
   m_ObjectHideFlags: 0
