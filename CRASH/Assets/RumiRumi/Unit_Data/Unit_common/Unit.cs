@@ -24,11 +24,6 @@ public class Unit : MonoBehaviour
     public bool isCool_down;    //ƒN[ƒ‹ƒ_ƒEƒ“‚µ‚Ä‚é‚©‚İ‚éYO!
     private bool isAttack_reserve;  //UŒ‚—\–ñ‚ğs‚Á‚Ä‚¢‚é‚©‚ğ‚İ‚éYO!
 
-    GameObject _dragon;
-    ChangeDragon changeDragon;
-    GameObject _winorlose;
-    WinOrLose winOrLose;
-
     //------------------------------------------------------------------------------
 
     private void Awake()
@@ -41,6 +36,7 @@ public class Unit : MonoBehaviour
     {
         isCool_down = false; //ƒN[ƒ‹ƒ_ƒEƒ“’†‚ÍAttack_speed‚Ì”’l•ª‘Ò‹@‚µ‚Ä‚¢‚Ü‚·B
         isAttack_reserve = false;
+<<<<<<< HEAD
         if (gameObject.tag == "Dragon1" || gameObject.tag == "Dragon2" || gameObject.tag == "Castle1" || gameObject.tag == "Castle2")
         {
             _dragon = GameObject.Find("ChangeDragon");
@@ -48,12 +44,15 @@ public class Unit : MonoBehaviour
             _winorlose = GameObject.Find("WinLose");
             winOrLose = _winorlose.GetComponent<WinOrLose>();
         }
+=======
+>>>>>>> parent of fc52020 (kobatashi_var03ã‚³ãƒŸãƒƒãƒˆ)
     }
 
 
 //------------------------------------------------------------------------------
 
     private void FixedUpdate()
+<<<<<<< HEAD
     {
 
         //ô”]‚³‚ê‚½‚çUŒ‚‘ÎÛ‚ğ‚È‚­‚·
@@ -65,8 +64,11 @@ public class Unit : MonoBehaviour
                 target = null;
         }
 
+=======
+    {   
+>>>>>>> parent of fc52020 (kobatashi_var03ã‚³ãƒŸãƒƒãƒˆ)
         //•Ší‚ÌUŒ‚”ÍˆÍ‚É“ü‚Á‚½‚çƒ^[ƒQƒbƒg‚ÉŒÅ’è
-        if (target == null && attackZone != null)
+        if(target == null && attackZone != null)
         {
             if(attackZone.weaponTarget != null)
             target = attackZone.weaponTarget;
@@ -77,21 +79,17 @@ public class Unit : MonoBehaviour
             //RiP
             Destroy(this.gameObject);
 
-            if (CompareTag("Castle1"))
+            if(gameObject.CompareTag("Castle1"))
             {
-                changeDragon.SummonDragon1();
-            }
-            else if (CompareTag("Castle2"))
-            {
-                changeDragon.SummonDragon2();
-            }
-            else if (CompareTag("Dragon1"))
-            {
+<<<<<<< HEAD
                 winOrLose.Win_Or_Lose(false);
+=======
+                SceneManager.LoadScene("LoseScene");
+>>>>>>> parent of fc52020 (kobatashi_var03ã‚³ãƒŸãƒƒãƒˆ)
             }
-            else if (CompareTag("Dragon2"))
+            else if (gameObject.CompareTag("Castle2"))
             {
-                winOrLose.Win_Or_Lose(true);
+                SceneManager.LoadScene("WinScene");
             }
         }
 
@@ -172,28 +170,36 @@ public class Unit : MonoBehaviour
     {
         if (gameObject.CompareTag("Unit1") && target == null)
         {
-            if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2") || co.collider.tag == ("Dragon2"))
+            if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2"))
                 target = co.gameObject;//UŒ‚‘ÎÛ‚ğ‘I‘ğ
         }
         else if (gameObject.CompareTag("Unit2") && target == null)
         {
-            if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1") || co.collider.tag == ("Dragon1"))
+            if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1"))
                 target = co.gameObject;     //UŒ‚‘ÎÛ‚ğ‘I‘ğ
         }
     }
 
     protected virtual void OnCollisionStay2D(Collision2D co)
     {
+        //if(co.gameObject == target.gameObject)
+        //{
+        //    target = null;  //UŒ‚”ÍˆÍŠO‚Éo‚½ê‡‚Ítarget‚©‚çŠO‚·‚æ
+        //}
+        //else
+        //{
+        //    return;
+        //}
         if (target == null)
         {
             if (gameObject.CompareTag("Unit1"))
             {
-                if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2") || co.collider.tag == ("Dragon2"))
+                if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2"))
                     target = co.gameObject;//UŒ‚‘ÎÛ‚ğ‘I‘ğ
             }
             else if (gameObject.CompareTag("Unit2"))
             {
-                if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1") || co.collider.tag == ("Dragon1"))
+                if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1"))
                     target = co.gameObject;     //UŒ‚‘ÎÛ‚ğ‘I‘ğ
             }
         }
