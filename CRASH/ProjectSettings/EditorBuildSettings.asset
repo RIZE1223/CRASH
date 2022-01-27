@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: 10d1f6f48368f21478282f906ee23840
+  - enabled: 1
+    path: Assets/main/mainBattleScene(tuusinn).unity
+    guid: ec8ea97cbb41aa945901f4351e53a100
+  - enabled: 1
+    path: Assets/Kobayashi/Scenes/Result.unity
+    guid: fe1ec63d63beeec4fb0d2b68d41c179e
   m_configObjects: {}

@@ -15,4 +15,4 @@ MonoBehaviour:
   unit_name: "\u4F53\u529B\uFF11\u306B\u3059\u308B\u3088\u541B"
   unit_type: 4
   unit_object: {fileID: 2799812447282452220, guid: 32775a47fb037d24abecc177c958a799, type: 3}
-  Price: 30
+  Price: 8
