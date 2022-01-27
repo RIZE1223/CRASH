@@ -23,6 +23,12 @@ public class Unit : MonoBehaviour
     [HideInInspector]
     public bool isCool_down;    //クールダウンしてるかみるYO!
     private bool isAttack_reserve;  //攻撃予約を行っているかをみるYO!
+
+    GameObject _dragon;
+    ChangeDragon changeDragon;
+    GameObject _winorlose;
+    WinOrLose winOrLose;
+
     //------------------------------------------------------------------------------
 
     private void Awake()
@@ -35,10 +41,17 @@ public class Unit : MonoBehaviour
     {
         isCool_down = false; //クールダウン中はAttack_speedの数値分待機しています。
         isAttack_reserve = false;
+        if (gameObject.tag == "Dragon1" || gameObject.tag == "Dragon2" || gameObject.tag == "Castle1" || gameObject.tag == "Castle2")
+        {
+            _dragon = GameObject.Find("ChangeDragon");
+            changeDragon = _dragon.GetComponent<ChangeDragon>();
+            _winorlose = GameObject.Find("WinLose");
+            winOrLose = _winorlose.GetComponent<WinOrLose>();
+        }
     }
 
 
-    //------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
     private void FixedUpdate()
     {
@@ -64,13 +77,21 @@ public class Unit : MonoBehaviour
             //RiP
             Destroy(this.gameObject);
 
-            if(gameObject.CompareTag("Castle1"))
+            if (CompareTag("Castle1"))
             {
-                SceneManager.LoadScene("LoseScene");
+                changeDragon.SummonDragon1();
             }
-            else if (gameObject.CompareTag("Castle2"))
+            else if (CompareTag("Castle2"))
             {
-                SceneManager.LoadScene("WinScene");
+                changeDragon.SummonDragon2();
+            }
+            else if (CompareTag("Dragon1"))
+            {
+                winOrLose.Win_Or_Lose(false);
+            }
+            else if (CompareTag("Dragon2"))
+            {
+                winOrLose.Win_Or_Lose(true);
             }
         }
 
@@ -151,12 +172,12 @@ public class Unit : MonoBehaviour
     {
         if (gameObject.CompareTag("Unit1") && target == null)
         {
-            if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2"))
+            if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2") || co.collider.tag == ("Dragon2"))
                 target = co.gameObject;//攻撃対象を選択
         }
         else if (gameObject.CompareTag("Unit2") && target == null)
         {
-            if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1"))
+            if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1") || co.collider.tag == ("Dragon1"))
                 target = co.gameObject;     //攻撃対象を選択
         }
     }
@@ -167,12 +188,12 @@ public class Unit : MonoBehaviour
         {
             if (gameObject.CompareTag("Unit1"))
             {
-                if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2"))
+                if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2") || co.collider.tag == ("Dragon2"))
                     target = co.gameObject;//攻撃対象を選択
             }
             else if (gameObject.CompareTag("Unit2"))
             {
-                if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1"))
+                if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1") || co.collider.tag == ("Dragon1"))
                     target = co.gameObject;     //攻撃対象を選択
             }
         }

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Kobayashi/Scenes/Result.unity
+    guid: fe1ec63d63beeec4fb0d2b68d41c179e
   m_configObjects: {}
