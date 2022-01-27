@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/handa/Scene/WinScene.unity
     guid: 158eb47638f91e941863fb661ec0d9b9
-  - enabled: 1
-    path: Assets/Kobayashi/Scenes/Result.unity
-    guid: fe1ec63d63beeec4fb0d2b68d41c179e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
