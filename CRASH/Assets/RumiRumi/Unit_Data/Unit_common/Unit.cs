@@ -24,11 +24,12 @@ public class Unit : MonoBehaviour
     public bool isCool_down;    //ƒN[ƒ‹ƒ_ƒEƒ“‚µ‚Ä‚é‚©‚İ‚éYO!
     private bool isAttack_reserve;  //UŒ‚—\–ñ‚ğs‚Á‚Ä‚¢‚é‚©‚ğ‚İ‚éYO!
 
-    //-------------------------
-    public bool isDragon;
+
     GameObject _dragon;
     ChangeDragon changeDragon;
-    //-------------------------
+    GameObject _winorlose;
+    WinOrLose winOrLose;
+
 
     //------------------------------------------------------------------------------
 
@@ -45,6 +46,8 @@ public class Unit : MonoBehaviour
 
         _dragon = GameObject.Find("ChangeDragon");
         changeDragon = _dragon.GetComponent<ChangeDragon>();
+        _winorlose = GameObject.Find("WinLose");
+        winOrLose = _winorlose.GetComponent<WinOrLose>();
     }
 
 
@@ -63,28 +66,23 @@ public class Unit : MonoBehaviour
         {
             //RiP
             Destroy(this.gameObject);
-
-            if (gameObject.CompareTag("Castle1") && isDragon == false)
+            if (CompareTag("Castle1"))
             {
                 changeDragon.SummonDragon1();
-                Debug.Log("ƒhƒ‰ƒSƒ“¢Š«‚P");
             }
-            else if (gameObject.CompareTag("Castle2") && isDragon == false)
+            else if (CompareTag("Castle2"))
             {
                 changeDragon.SummonDragon2();
-                Debug.Log("ƒhƒ‰ƒSƒ“¢Š«2");
+            }
+            else if(CompareTag("Dragon1"))
+            {
+                winOrLose.Win_Or_Lose(false);
+            }
+            else if (CompareTag("Dragon2"))
+            {
+                winOrLose.Win_Or_Lose(true);
             }
 
-            if (gameObject.CompareTag("Castle1") && isDragon == true)
-            {
-                //Ÿ”sƒƒ\ƒbƒh
-                WinLose.Win_Or_Lose(true);
-            }
-            else if (gameObject.CompareTag("Castle2") && isDragon == true)
-            {
-                //Ÿ”sƒƒ\ƒbƒh
-                WinLose.Win_Or_Lose(false);
-            }
         }
 
         else if (unit_model.hp > 0)
@@ -164,12 +162,12 @@ public class Unit : MonoBehaviour
     {
         if (gameObject.CompareTag("Unit1") && target == null)
         {
-            if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2"))
+            if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2")||co.collider.tag == ("Dragon2"))
                 target = co.gameObject;//UŒ‚‘ÎÛ‚ğ‘I‘ğ
         }
         else if (gameObject.CompareTag("Unit2") && target == null)
         {
-            if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1"))
+            if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1")|| co.collider.tag == ("Dragon1"))
                 target = co.gameObject;     //UŒ‚‘ÎÛ‚ğ‘I‘ğ
         }
     }
@@ -188,12 +186,12 @@ public class Unit : MonoBehaviour
         {
             if (gameObject.CompareTag("Unit1"))
             {
-                if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2"))
+                if (co.collider.tag == ("Unit2") || co.collider.tag == ("Castle2") || co.collider.tag == ("Dragon2"))
                     target = co.gameObject;//UŒ‚‘ÎÛ‚ğ‘I‘ğ
             }
             else if (gameObject.CompareTag("Unit2"))
             {
-                if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1"))
+                if (co.collider.tag == ("Unit1") || co.collider.tag == ("Castle1") || co.collider.tag == ("Dragon1"))
                     target = co.gameObject;     //UŒ‚‘ÎÛ‚ğ‘I‘ğ
             }
         }
