@@ -23,7 +23,6 @@ public class Unit : MonoBehaviour
     [HideInInspector]
     public bool isCool_down;    //クールダウンしてるかみるYO!
     private bool isAttack_reserve;  //攻撃予約を行っているかをみるYO!
-
     //------------------------------------------------------------------------------
 
     private void Awake()
@@ -42,9 +41,19 @@ public class Unit : MonoBehaviour
     //------------------------------------------------------------------------------
 
     private void FixedUpdate()
-    {   
+    {
+
+        //洗脳されたら攻撃対象をなくす
+        if (target != null)
+        {
+            if (gameObject.tag == "Unit1" && (target.gameObject.tag == "Unit1" || target.gameObject.tag == "Castle1"))
+                target = null;
+            else if (gameObject.tag == "Unit2" && (target.gameObject.tag == "Unit2" || target.gameObject.tag == "Castle2"))
+                target = null;
+        }
+
         //武器の攻撃範囲に入ったらターゲットに固定
-        if(target == null && attackZone != null)
+        if (target == null && attackZone != null)
         {
             if(attackZone.weaponTarget != null)
             target = attackZone.weaponTarget;
@@ -154,14 +163,6 @@ public class Unit : MonoBehaviour
 
     protected virtual void OnCollisionStay2D(Collision2D co)
     {
-        //if(co.gameObject == target.gameObject)
-        //{
-        //    target = null;  //攻撃範囲外に出た場合はtargetから外すよ
-        //}
-        //else
-        //{
-        //    return;
-        //}
         if (target == null)
         {
             if (gameObject.CompareTag("Unit1"))

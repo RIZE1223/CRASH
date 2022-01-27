@@ -76,6 +76,7 @@ public class AiManager : MonoBehaviour
                 for (int i = 0; i < 2; i++)
                 {
                     unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                    unit_child.transform.parent = unit_parent.transform;
                 }
             }
             else if (rmd >= 35)
@@ -83,6 +84,7 @@ public class AiManager : MonoBehaviour
                 for (int i = 0; i < 3; i++)
                 {
                     unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                    unit_child.transform.parent = unit_parent.transform;
                 }
             }
             else if (rmd >= 4)
@@ -90,6 +92,7 @@ public class AiManager : MonoBehaviour
                 for (int i = 0; i < 1; i++)
                 {
                     unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                    unit_child.transform.parent = unit_parent.transform;
                 }
             }
             else if (rmd >= 3)
@@ -97,6 +100,7 @@ public class AiManager : MonoBehaviour
                 for (int i = 0; i < 10; i++)
                 {
                     unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                    unit_child.transform.parent = unit_parent.transform;
                 }
             }
         }
@@ -105,6 +109,7 @@ public class AiManager : MonoBehaviour
             for (int i = 0; i < 10; i++)
             {
                 unit_child = Unit_manager.Instantiate_unit(Unit_manager.unit_list[Random.Range(0, Unit_manager.unit_list.Count)], Summon_pos(), 2);  //生成するユニット、生成する場所、生成するプレイヤー
+                unit_child.transform.parent = unit_parent.transform;
             }
         }
         #endregion

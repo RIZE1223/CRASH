@@ -79,7 +79,7 @@ public class Unit_manager : MonoBehaviour
     /// <returns></returns>
     public int Attack_calculation(int attack_power,int defense_power,GameObject attack_name)
     {
-        Debug.Log((attack_name)+"が"+(attack_power - defense_power)+"ダメージを与えた");
+        //Debug.Log((attack_name)+"が"+(attack_power - defense_power)+"ダメージを与えた");
         if (attack_power > defense_power)
         {
             //Debug.Log("以下のダメージが入ったよ");

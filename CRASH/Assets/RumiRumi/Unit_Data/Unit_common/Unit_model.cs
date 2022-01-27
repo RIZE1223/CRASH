@@ -16,7 +16,4 @@ public class Unit_model : Unit_base
     public float move_speed;  //ユニットの移動速度
     [HideInInspector]
     public float now_attack_delay;    //ディレイ経過時間計算用 / 使用する場所はUnit_Manager
-
-
-
 }
