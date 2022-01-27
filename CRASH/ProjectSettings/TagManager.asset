@@ -21,6 +21,8 @@ TagManager:
   - Cursor2
   - StrategyCard
   - Frame
+  - Dragon1
+  - Dragon2
   layers:
   - Default
   - TransparentFX
